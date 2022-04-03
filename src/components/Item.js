@@ -1,11 +1,25 @@
 import React from "react";
+import Swal from 'sweetalert2'
 
 
-const Item = ({todo, deleteHandler, completeHandler}) => {
+const Item = ({todo, deleteHandler, completeHandler, updateNameHandler}) => {
+
+
+    const showModal = async (id,oldTaskName) => {
+        const { value: newTaskName } = await Swal.fire({
+            input: 'text',
+            inputLabel: 'Enter the new task name',
+            inputValue : oldTaskName,
+        })
+        updateNameHandler(id, newTaskName)
+    }
 
     return (
         <div className="todo">
             <li className={`todo-item ${todo.completed ? "completed" : ""}`}> {todo.text}</li>
+            <button onClick={()=> showModal(todo.id,todo.text)} className="edit-btn">
+                <i className="fas fa-edit"></i>
+            </button>
             <button onClick={()=>{completeHandler(todo.id)}} className="complete-btn">
                 <i className="fas fa-check"></i>
             </button>
@@ -17,3 +31,4 @@ const Item = ({todo, deleteHandler, completeHandler}) => {
 }
 
 export default Item
+

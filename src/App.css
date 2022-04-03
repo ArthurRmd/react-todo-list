@@ -66,6 +66,7 @@ form button:hover {
 }
 
 .trash-btn,
+.edit-btn,
 .complete-btn {
   background: #ff6f47;
   color: white;
@@ -77,11 +78,15 @@ form button:hover {
 .complete-btn {
   background: rgb(11, 212, 162);
 }
+.edit-btn {
+  background: rgb(9, 140, 180);
+}
 .todo-item {
   padding: 0rem 0.5rem;
 }
 
 .fa-trash,
+.fa-edit,
 .fa-check {
   pointer-events: none;
 }
@@ -131,3 +136,4 @@ select {
   cursor: pointer;
   pointer-events: none;
 }
+

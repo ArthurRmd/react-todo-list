@@ -8,15 +8,18 @@ const TodoList = ({status, todos, setTodos}) => {
         setTodos(todos.filter(todo => todo.id !== id))
     }
 
-    const completeHandler = (id) => {
-        console.log(todos.map(todo => {
+    const updateNameHandler = (id,newTaskName) => {
+        setTodos(todos.map(todo => {
             if (todo.id === id) {
                 return {
-                    ...todo, completed: !todo.completed
+                    ...todo, text: newTaskName
                 }
             }
             return todo
         }))
+    }
+
+    const completeHandler = (id) => {
         setTodos(todos.map(todo => {
             if (todo.id === id) {
                 return {
@@ -61,7 +64,7 @@ const TodoList = ({status, todos, setTodos}) => {
                    })
                        .map((todo) => (
                            <Item key={todo.id} todo={todo} deleteHandler={deleteHandler}
-                                 completeHandler={completeHandler}>
+                                 completeHandler={completeHandler} updateNameHandler={updateNameHandler}>
                            </Item>
                        ))}
                </ul>
