@@ -1,14 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import {TodoListStore} from './App';
 import reportWebVitals from './reportWebVitals';
 import {Provider} from "react-redux";
+import store from './store'
 
 
 const rootElement = document.getElementById('root')
 ReactDOM.render(
-        <App />,
+    <Provider store={store}>
+        <TodoListStore />
+    </Provider>,
     rootElement
 )
 
